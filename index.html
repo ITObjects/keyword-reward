@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キーワードチャレンジ</title>
+  <style>
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f8f8ff;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    #reward {
+      display: none;
+      margin-top: 30px;
+    }
+    input {
+      font-size: 1.2em;
+      padding: 10px;
+      width: 250px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-left: 10px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: crimson;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 ひみつのキーワードを入力してね</h1>
+  <input type="text" id="keyword" placeholder="ここに入力">
+  <button onclick="checkKeyword()">決定！</button>
+
+  <div id="message"></div>
+
+  <div id="reward">
+    <h2>🎉 おめでとう！正解だよ！</h2>
+    <img src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" alt="宝箱GIF" width="300">
+    <p>キミだけが見られるごほうびページだよ！</p>
+  </div>
+
+  <audio id="success-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+  <script>
+    function checkKeyword() {
+      const input = document.getElementById("keyword").value.trim();
+      const message = document.getElementById("message");
+      const reward = document.getElementById("reward");
+      const sound = document.getElementById("success-sound");
+
+      if (input === "たから") {
+        message.textContent = "";
+        reward.style.display = "block";
+        sound.play();
+      } else {
+        reward.style.display = "none";
+        message.textContent = "❌ ちがうよ〜。もういちどチャレンジしてみて！";
+      }
+    }
+  </script>
+</body>
+</html>
